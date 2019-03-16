@@ -1,4 +1,6 @@
 
+import java.util.Random;
+
 public class Moves {
 	
 	public static int[] cornerNum = {0,2,8,6};
@@ -555,7 +557,88 @@ public class Moves {
 	}
 	
 	
-
+	
+	public static void scrumble(int[][] cube) {
+		Random rand = new Random();
+		int n;
+		for(int i = 0; i< 20 ; i++) {
+			n = rand.nextInt(24);
+			switch (n) {
+			case 1:
+				L(cube);
+				break;				
+			case 2:	
+				Ln(cube);
+				break;	
+			case 3:
+				R(cube);
+				break;
+			case 4:
+				Rn(cube);
+				break;	
+			case 5:
+				U(cube);
+				break;
+			case 6:
+				Un(cube);
+				break;	
+			case 7:
+				D(cube);
+				break;
+			case 8:
+				Dn(cube);
+				break;	
+			case 9:
+				F(cube);
+				break;	
+			case 10:
+				Fn(cube);
+				break;	
+			case 11:
+				B(cube);
+				break;	
+			case 12:
+				Bn(cube);
+				break;	
+			case 13:
+				M(cube);
+				break;				
+			case 14:	
+				Mn(cube);
+				break;	
+			case 15:
+				E(cube);
+				break;
+			case 16:
+				En(cube);
+				break;	
+			case 17:
+				S(cube);
+				break;
+			case 18:
+				Sn(cube);
+				break;	
+			case 19:
+				X(cube);
+				break;
+			case 20:
+				Xn(cube);
+				break;	
+			case 21:
+				Y(cube);
+				break;	
+			case 22:
+				Yn(cube);
+				break;	
+			case 23:
+				Z(cube);
+				break;	
+			case 24:
+				Zn(cube);
+				break;	
+			}
+		}
+	}
 
 	
 	
