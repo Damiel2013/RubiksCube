@@ -562,7 +562,7 @@ public class Moves {
 		Random rand = new Random();
 		int n;
 		for(int i = 0; i< 20 ; i++) {
-			n = rand.nextInt(24);
+			n = rand.nextInt(18);
 			switch (n) {
 			case 1:
 				L(cube);
@@ -617,24 +617,6 @@ public class Moves {
 				break;
 			case 18:
 				Sn(cube);
-				break;	
-			case 19:
-				X(cube);
-				break;
-			case 20:
-				Xn(cube);
-				break;	
-			case 21:
-				Y(cube);
-				break;	
-			case 22:
-				Yn(cube);
-				break;	
-			case 23:
-				Z(cube);
-				break;	
-			case 24:
-				Zn(cube);
 				break;	
 			}
 		}
