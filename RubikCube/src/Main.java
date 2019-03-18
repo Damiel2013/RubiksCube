@@ -8,7 +8,7 @@ public class Main {
 		
 		CubeRubik.remplissage(rubik);
 		CubeRubik.show(rubik);
-		Moves.X(rubik);
+		Moves.scrumble(rubik);
 		CubeRubik.show(rubik);
 		
 	}

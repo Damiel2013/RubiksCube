@@ -82,11 +82,11 @@ public class Moves {
 			int faces[]= {2,5,4,0};
 			faceRotation (cube,3,false);	
 			for(int i = 0; i < 3 ; i++) {
-				val[i-1] = cube[faces[3]][(i*3)+2] ;
+				val[i] = cube[faces[3]][(i*3)+2] ;
 			}
 			for(int j = 0; j < 4 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
-					valAnt[i-1] = cube[faces[j]][(i*3)+2];
+					valAnt[i] = cube[faces[j]][(i*3)+2];
 					cube[faces[j]][(i*3)+2] = val[i];
 					val[i] = valAnt[i];
 				}
