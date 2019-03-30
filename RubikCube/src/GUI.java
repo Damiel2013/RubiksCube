@@ -19,9 +19,11 @@ public class GUI extends JFrame  {
 		
 		Buttons buttons = new Buttons();
 		PanelCube rubik = new PanelCube();
-		
+				
 		JSplitPane splitPaneRight = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, rubik, buttons);
-		splitPaneRight.setDividerLocation(800 - 130);
+		splitPaneRight.setOneTouchExpandable(true);
+		splitPaneRight.setDividerLocation(750);
+		
 		container.add(splitPaneRight);
 	
 		validate();
@@ -64,6 +66,7 @@ public class GUI extends JFrame  {
 		public JButton b25= new JButton("Scrumble");
 		public JButton b26= new JButton("Reset ");
 		
+		@SuppressWarnings("deprecation")
 		public Buttons() {
 		
 		 b1.addActionListener(new ActionListener() {
@@ -248,7 +251,9 @@ public class GUI extends JFrame  {
 	        add(b23);
 	        add(b24);
 	        add(b25);
-	        add(b26);	        
+	        add(b26);	     
+	        
+
 		}
 		@Override
 		public void actionPerformed(ActionEvent arg0) {	
@@ -257,7 +262,7 @@ public class GUI extends JFrame  {
 	
 	private class PanelCube extends JPanel{
 		public PanelCube(){
-			
+			this.setMinimumSize(new Dimension (750,900));
 		}
 		
 		public void paintComponent(Graphics _g) {
