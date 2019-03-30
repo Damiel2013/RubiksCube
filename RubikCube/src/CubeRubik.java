@@ -1,11 +1,9 @@
 public class CubeRubik {
-	public static int [] axesNum = {1,3,2,0,5,4};
 
 	
-	public static void remplissage(int[][] cube){
+	public static void reset(int[][] cube){
 		for(int i = 0; i < cube.length; i++) {
 			for(int j = 0; j < cube[i].length; j++) {
-				//rubik[i][j] = axesNum[i];
 				cube[i][j] = i;
 			}
 		}

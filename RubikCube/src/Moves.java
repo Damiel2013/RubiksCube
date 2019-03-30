@@ -53,24 +53,21 @@ public class Moves {
 			}
 			
 		}
-	
-	
-	
-	
+			
 	public static void R (int[][] cube) {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
 			int faces[]= {0,4,5,2};
 			faceRotation (cube,3,true);	
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i*3)+2] ;
+			for(int i = 1; i <= 3 ; i++) {
+				val[i-1] = cube[faces[3]][(i*3)-1] ;
 			}
 			for(int j = 0; j < 4 ; j++)	{
-				for(int i = 0; i < 3 ; i++) {
-					valAnt[i] = cube[faces[j]][(i*3)+2];
-					cube[faces[j]][(i*3)+2] = val[i];
-					val[i] = valAnt[i];
+				for(int i = 1; i <= 3 ; i++) {
+					valAnt[i-1] = cube[faces[j]][(i*3)-1];
+					cube[faces[j]][(i*3)-1] = val[i-1];
+					val[i-1] = valAnt[i-1];
 				}
 			}
 	}
