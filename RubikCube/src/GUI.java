@@ -2,11 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseMotionAdapter;
 
 public class GUI extends JFrame  {
 
@@ -65,10 +60,9 @@ public class GUI extends JFrame  {
 		public JButton b24= new JButton("Z'");
 		public JButton b25= new JButton("Scrumble");
 		public JButton b26= new JButton("Reset ");
+		public JButton b27= new JButton("Solve ");
 		
-		@SuppressWarnings("deprecation")
-		public Buttons() {
-		
+		public Buttons() {		
 		 b1.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
 	            	Moves.R(Main.rubik);            	
@@ -224,6 +218,12 @@ public class GUI extends JFrame  {
 	            	CubeRubik.reset(Main.rubik);
 	            	CubeRubik.show(Main.rubik);       	 	
 	            }
+	        });
+	        b27.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent event) {
+	            	IAtest.solve(Main.rubik);
+	            	CubeRubik.show(Main.rubik);       	 	
+	            }
 	        }); 
 	      
 	        add(b1);
@@ -251,7 +251,8 @@ public class GUI extends JFrame  {
 	        add(b23);
 	        add(b24);
 	        add(b25);
-	        add(b26);	     
+	        add(b26);	
+	        add(b27);
 	        
 
 		}
@@ -263,72 +264,28 @@ public class GUI extends JFrame  {
 	private class PanelCube extends JPanel{
 		public PanelCube(){
 			this.setMinimumSize(new Dimension (750,900));
-		}
-		
+		}		
 		public void paintComponent(Graphics _g) {
-			Graphics2D g = (Graphics2D) _g;
-			
-			//Dimensions of the single cube
-			int cubeX = 75;
-			int cubeY = 30;
-			int cubeW = 42;
-			int cubeH = 42;
-			int face = 0;			
+			Graphics2D g = (Graphics2D) _g;			
+			//Dimensions of a single little cube
+			int cubeX0 = 75;
+			int cubeY0 = 30;
+			int cubeWH = 42;
 			int i = 0;
-
+			int coordsx [] = {0,3,3,3,3,6};
+			int coordsy [] = {3,0,3,6,9,3};
 			
-			for(int k = 0; k<3;k++) {
-				for(int j = 3; j<6;j++) {				
-					drawSqr(g, cubeX + j*cubeW,cubeY + k*cubeH, getColor(Main.rubik[face][i]));	
-					i++;
-					//System.out.println("DEBUG : x " + j*cubeW + "  y :" + cubeY + k*cubeH + "  i : " + i );
+			
+			for(int l = 0; l< 6;l++) {			
+				for(int k = coordsx[l]; k<coordsx[l]+3;k++) {				
+					for(int j = coordsy[l]; j<coordsy[l]+3 ;j++) {	
+						drawSqr(g, cubeX0 + j*cubeWH,cubeY0 + k*cubeWH, getColor(Main.rubik[l][i]));	
+						i++;						
+					//	System.out.println("DEBUG : x " + j*cubeW + "  y :" + cubeY + k*cubeH + "  i : " + i );
+					}
 				}
+				i = 0;
 			}
-			face++;
-			i = 0;
-			for (int k = 3 ; k< 6 ; k++) {
-				for (int j = 0 ; j< 3 ; j++) {
-					drawSqr(g, cubeX + cubeW*j ,cubeY + cubeH*k, getColor(Main.rubik[face][i]));
-					i++;
-					//System.out.println("DEBUG : x " + j*cubeW + "  y :" + cubeY + k*cubeH + "  i : " + i );
-				}
-			}	
-			i=0;
-			face++;
-			for (int k = 3 ; k < 6 ; k++) {
-				for (int j = 3 ; j< 6 ; j++) {
-					drawSqr(g, cubeX + cubeW*j ,cubeY + cubeH*k, getColor(Main.rubik[face][i]));
-					i++;
-					//System.out.println("DEBUG : x " + j*cubeW + "  y :" + cubeY + k*cubeH + "  i : " + i );
-				}
-			}	
-			i = 0;
-			face++;
-			for (int k = 3 ; k < 6 ; k++) {
-				for (int j = 6 ; j< 9 ; j++) {
-					drawSqr(g, cubeX + cubeW*j ,cubeY + cubeH*k, getColor(Main.rubik[face][i]));
-					i++;
-					//System.out.println("DEBUG : x " + j*cubeW + "  y :" + cubeY + k*cubeH + "  i : " + i );
-				}
-			}	
-			i = 0;
-			face++;
-			for (int k = 3 ; k < 6 ; k++) {
-				for (int j = 9 ; j< 12 ; j++) {
-					drawSqr(g, cubeX + cubeW*j ,cubeY + cubeH*k, getColor(Main.rubik[face][i]));
-					i++;
-					//System.out.println("DEBUG : x " + j*cubeW + "  y :" + cubeY + k*cubeH + "  i : " + i );
-				}
-			}	
-			i = 0;
-			face++;
-			for (int k = 6 ; k< 9; k++) {
-				for (int j = 3 ; j< 6 ; j++) {
-					drawSqr(g, cubeX + cubeW*j ,cubeY + cubeH*k, getColor(Main.rubik[face][i]));
-					i++;
-					//System.out.println("DEBUG : x " + j*cubeW + "  y :" + cubeY + k*cubeH + "  i : " + i );
-				}
-			}			
 		}
 		
 		public void drawSqr(Graphics2D g, int x, int y, Color color) {

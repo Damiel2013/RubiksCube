@@ -1,5 +1,5 @@
-
 import java.util.Random;
+
 
 public class Moves {
 	
@@ -58,16 +58,13 @@ public class Moves {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
-			int faces[]= {0,4,5,2};
+			int faces[]= {2,0,4,5,2};
 			faceRotation (cube,3,true);	
-			for(int i = 1; i <= 3 ; i++) {
-				val[i-1] = cube[faces[3]][(i*3)-1] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
-				for(int i = 1; i <= 3 ; i++) {
-					valAnt[i-1] = cube[faces[j]][(i*3)-1];
-					cube[faces[j]][(i*3)-1] = val[i-1];
-					val[i-1] = valAnt[i-1];
+			for(int j = 0; j < 5 ; j++)	{
+				for(int i = 0; i < 3 ; i++) {
+					valAnt[i] = cube[faces[j]][(i*3)+2];
+					cube[faces[j]][(i*3)+2] = val[i];
+					val[i] = valAnt[i];
 				}
 			}
 	}
@@ -76,12 +73,9 @@ public class Moves {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
-			int faces[]= {2,5,4,0};
+			int faces[]= {0,2,5,4,0};
 			faceRotation (cube,3,false);	
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i*3)+2] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
+			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
 					valAnt[i] = cube[faces[j]][(i*3)+2];
 					cube[faces[j]][(i*3)+2] = val[i];
@@ -94,12 +88,9 @@ public class Moves {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
-			int faces[]= {0,4,5,2};
+			int faces[]= {2,0,4,5,2};
 			faceRotation (cube,1,true);	
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i*3)] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
+			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
 					valAnt[i] = cube[faces[j]][(i*3)];
 					cube[faces[j]][(i*3)] = val[i];
@@ -112,12 +103,9 @@ public class Moves {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
-			int faces[]= {2,5,4,0};
-			faceRotation (cube,1,false);	
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i*3)] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
+			int faces[]= {0,2,5,4,0};
+			faceRotation (cube,1,false);
+			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
 					valAnt[i] = cube[faces[j]][(i*3)];
 					cube[faces[j]][(i*3)] = val[i];
@@ -130,12 +118,9 @@ public class Moves {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
-			int faces[]= {1,4,3,2};
+			int faces[]= {2,1,4,3,2};
 			faceRotation (cube,0,true);	
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i)] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
+			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
 					valAnt[i] = cube[faces[j]][(i)];
 					cube[faces[j]][(i)] = val[i];
@@ -146,32 +131,24 @@ public class Moves {
 	
 	public static void Un (int[][] cube) {
 		int val[] = new int[3];
-		int valAnt[] = new int[3];
-		
-			int faces[]= {2,3,4,1};
-			faceRotation (cube,0,false);	
+		int valAnt[] = new int[3];	
+		int faces[]= {1,2,3,4,1};
+		faceRotation (cube,0,false);
+		for(int j = 0; j < 5 ; j++)	{
 			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i)] ;
+				valAnt[i] = cube[faces[j]][(i)];
+				cube[faces[j]][(i)] = val[i];
+				val[i] = valAnt[i];
 			}
-			for(int j = 0; j < 4 ; j++)	{
-				for(int i = 0; i < 3 ; i++) {
-					valAnt[i] = cube[faces[j]][(i)];
-					cube[faces[j]][(i)] = val[i];
-					val[i] = valAnt[i];
-				}
-			}
+		}
 	}
 	
 	public static void D (int[][] cube) {
 		int val[] = new int[3];
-		int valAnt[] = new int[3];
-		
-			int faces[]= {2,3,4,1};
-			faceRotation (cube,5,false);	
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i+6)] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
+		int valAnt[] = new int[3];	
+			int faces[]= {1,2,3,4,1};
+			faceRotation (cube,5,false);
+			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
 					valAnt[i] = cube[faces[j]][(i+6)];
 					cube[faces[j]][i+6] = val[i];
@@ -184,12 +161,9 @@ public class Moves {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
-			int faces[]= {1,4,3,2};
+			int faces[]= {2,1,4,3,2};
 			faceRotation (cube,5,true);	
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i+6)] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
+			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
 					valAnt[i] = cube[faces[j]][(i+6)];
 					cube[faces[j]][i+6] = val[i];
@@ -201,157 +175,70 @@ public class Moves {
 	public static void F (int[][] cube) {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
-		int j = 0 ;
-		
-			int faces[]= {3,5,1,0};
+			int faces[]= {0,3,5,1,0};
 			faceRotation (cube,2,true);	
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i+6)] ;
+			for(int j = 0 ; j < 5 ; j++ ) {
+				for(int i = 0; i < 3 ; i++) {
+					int iequations [] = {i+6,i*3,i,i*3+2,i+6} ;
+					valAnt[i] = cube[faces[j]][iequations[j]];
+					cube[faces[j]][iequations[j]] = val[i];
+					val[i] = valAnt[i];				
+				}
 			}
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i*3)];
-				cube[faces[j]][i*3] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i)];
-				cube[faces[j]][i] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i*3)+2];
-				cube[faces[j]][(i*3)+2] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][i+6];
-				cube[faces[j]][i+6] = val[i];
-				val[i] = valAnt[i];
-			}			
 	}	
 	
 	public static void Fn (int[][] cube) {
 		int val[] = new int[3];
-		int valAnt[] = new int[3];
-		int j = 0 ;
-		
-			int faces[]= {0,1,5,3};
-			faceRotation (cube,2,false);	
+		int valAnt[] = new int[3];	
+		int faces[]= {3,0,1,5,3};
+		faceRotation (cube,2,false);	
+		for(int j = 0 ; j < 5 ; j++ ) {
 			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i*3)] ;
+				int iequations [] = {i*3,i+6,i*3+2,i,i*3} ;
+				valAnt[i] = cube[faces[j]][iequations[j]];
+				cube[faces[j]][iequations[j]] = val[i];
+				val[i] = valAnt[i];				
 			}
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i+6)];
-				cube[faces[j]][i+6] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i*3)+2];
-				cube[faces[j]][(i*3)+2] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][i];
-				cube[faces[j]][i] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][i*3];
-				cube[faces[j]][i*3] = val[i];
-				val[i] = valAnt[i];
-			}			
+		}
 	}
 	
 	public static void B (int[][] cube) {
 		int val[] = new int[3];
-		int valAnt[] = new int[3];
-		int j = 0 ;
-		
-			int faces[]= {0,1,5,3};
-			faceRotation (cube,4,false);	
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i*3)+2] ;
+		int valAnt[] = new int[3];	
+			int faces[]= {3,0,1,5,3};
+			faceRotation (cube,4,false);		
+			for(int j = 0 ; j < 5 ; j++ ) {
+				for(int i = 0; i < 3 ; i++) {
+					int iequations [] = {i*3+2,i,i*3,i+6,i*3+2} ;
+					valAnt[i] = cube[faces[j]][iequations[j]];
+					cube[faces[j]][iequations[j]] = val[i];
+					val[i] = valAnt[i];
+				}
 			}
-			//0
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i)];
-				cube[faces[j]][(i)] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			//1
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] =cube[faces[j]][(i*3)];
-				cube[faces[j]][i*3] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			//5
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i+6)];
-				cube[faces[j]][(i+6)] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			//3
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i*3)+2];
-				cube[faces[j]][(i*3)+2] = val[i];
-				val[i] = valAnt[i];
-			}			
 	}	
+	
 	
 	public static void Bn (int[][] cube) {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
-		int j = 0 ;
-		
-			int faces[]= {3,5,1,0};
-			faceRotation (cube,4,true);	
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i)] ;
-				
+			int faces[]= {0,3,5,1,0};
+			faceRotation (cube,4,true);			
+			for(int j = 0 ; j < 5 ; j++ ) {
+				for(int i = 0; i < 3 ; i++) {
+					int iequations [] = {i,i*3+2,i+6,i*3,i} ;
+					valAnt[i] = cube[faces[j]][iequations[j]];
+					cube[faces[j]][iequations[j]] = val[i];
+					val[i] = valAnt[i];
+				}
 			}
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i*3)+2];
-				cube[faces[j]][(i*3)+2] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i+6)];
-				cube[faces[j]][i+6] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][(i*3)];
-				cube[faces[j]][(i*3)] = val[i];
-				val[i] = valAnt[i];
-			}
-			j++;
-			for(int i = 0; i < 3 ; i++) {
-				valAnt[i] = cube[faces[j]][i];
-				cube[faces[j]][i] = val[i];
-				val[i] = valAnt[i];
-			}			
 	}	
 	
 	public static void M (int[][] cube) {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
-			int faces[]= {2,5,4,0};
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i*3)+1] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
+			int faces[]= {0,2,5,4,0};
+			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
 					valAnt[i] = cube[faces[j]][(i*3)+1];
 					cube[faces[j]][(i*3)+1] = val[i];
@@ -362,13 +249,9 @@ public class Moves {
 	
 	public static void Mn (int[][] cube) {
 		int val[] = new int[3];
-		int valAnt[] = new int[3];
-		
-			int faces[]= {0,4,5,2};
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i*3)+1] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
+		int valAnt[] = new int[3];		
+			int faces[]= {2,0,4,5,2};
+			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
 					valAnt[i] = cube[faces[j]][(i*3)+1];
 					cube[faces[j]][(i*3)+1] = val[i];
@@ -381,11 +264,8 @@ public class Moves {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
-			int faces[]= {3,4,1,2};
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i+3)] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
+			int faces[]= {2,3,4,1,2};
+			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
 					valAnt[i] = cube[faces[j]][(i+3)];
 					cube[faces[j]][(i+3)] = val[i];
@@ -398,11 +278,8 @@ public class Moves {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
-			int faces[]= {2,1,4,3};
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i+3)] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
+			int faces[]= {3,2,1,4,3};
+			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
 					valAnt[i] = cube[faces[j]][(i+3)];
 					cube[faces[j]][(i+3)] = val[i];
@@ -414,47 +291,62 @@ public class Moves {
 	public static void S (int[][] cube) {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
-		
-			int faces[]= {0,3,5,1};
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i+3)] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
-				for(int i = 0; i < 3 ; i++) {
-					valAnt[i] =cube[faces[j]][(i+3)];
-					cube[faces[j]][(i+3)] = val[i];
-					val[i] = valAnt[i];
+		int j = 0;
+			int faces[]= {1,0,3,5,1};
+			for(int k = 0; k<faces.length; k++) {
+				if(j%2 == 0) {
+					for(int i = 0; i < 3 ; i++) {
+						valAnt[i] =cube[faces[j]][((i*3)+1)];
+						cube[faces[j]][((i*3)+1)] = val[i];
+						val[i] = valAnt[i];					
+					}	
+					j++;
 				}
-			}
+				else{
+					for(int i = 0; i < 3 ; i++) {
+						valAnt[i] = cube[faces[j]][(i+3)];
+						cube[faces[j]][(i+3)] = val[i];
+						val[i] = valAnt[i];
+					}
+					j++;
+				}
+			}	
 	}
 	
 	public static void Sn (int[][] cube) {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
+		int j = 0;
 		
-			int faces[]= {1,5,3,0};
-			for(int i = 0; i < 3 ; i++) {
-				val[i] = cube[faces[3]][(i+3)] ;
-			}
-			for(int j = 0; j < 4 ; j++)	{
-				for(int i = 0; i < 3 ; i++) {
-					valAnt[i] = cube[faces[j]][(i+3)];
-					cube[faces[j]][(i+3)] = val[i];
-					val[i] = valAnt[i];
+			int faces[]= {0,1,5,3,0};
+			for(int k = 0; k<faces.length; k++) {
+				if(j%2 == 0) {
+					for(int i = 0; i < 3 ; i++) {
+						valAnt[i] =cube[faces[j]][(i+3)];
+						cube[faces[j]][(i+3)] = val[i];
+						val[i] = valAnt[i];					
+					}	
+					j++;
+				}
+				else{
+					for(int i = 0; i < 3 ; i++) {
+						valAnt[i] = cube[faces[j]][(i*3)+1];
+						cube[faces[j]][(i*3)+1] = val[i];
+						val[i] = valAnt[i];
+					}
+					j++;
 				}
 			}
 	}
 	
+	
 	public static void X(int[][] cube) {
 		int val[] = new int[9];
 		int valAnt[] = new int[9];
-		int faces[]= {0,4,5,2};
+		int faces[]= {2,0,4,5,2};
 		faceRotation (cube,3,true);	
-		faceRotation (cube,1,true);			
-		for(int i = 0; i < 9 ; i++) {
-			val[i] = cube[faces[3]][(i)] ;
-		}
-		for(int j = 0; j < 4 ; j++)	{
+		faceRotation (cube,1,true);
+		for(int j = 0; j < 5 ; j++)	{
 			for(int i = 0; i < 9 ; i++) {
 				valAnt[i] = cube[faces[j]][(i)];
 				cube[faces[j]][(i)] = val[i];
@@ -466,13 +358,10 @@ public class Moves {
 	public static void Xn(int[][] cube) {
 		int val[] = new int[9];
 		int valAnt[] = new int[9];
-		int faces[]= {2,5,4,0};
+		int faces[]= {0,2,5,4,0};
 		faceRotation (cube,3,false);	
-		faceRotation (cube,1,false);		
-		for(int i = 0; i < 9 ; i++) {
-			val[i] = cube[faces[3]][(i)] ;
-		}
-		for(int j = 0; j < 4 ; j++)	{
+		faceRotation (cube,1,false);
+		for(int j = 0; j < 5 ; j++)	{
 			for(int i = 0; i < 9 ; i++) {
 				valAnt[i] = cube[faces[j]][(i)];
 				cube[faces[j]][(i)] = val[i];
@@ -484,13 +373,10 @@ public class Moves {
 	public static void Y(int[][] cube) {
 		int val[] = new int[9];
 		int valAnt[] = new int[9];
-		int faces[]= {2,1,4,3};
+		int faces[]= {3,2,1,4,3};
 		faceRotation (cube,0,true);	
 		faceRotation (cube,5,true);			
-		for(int i = 0; i < 9 ; i++) {
-			val[i] = cube[faces[3]][(i)] ;
-		}
-		for(int j = 0; j < 4 ; j++)	{
+		for(int j = 0; j < 5 ; j++)	{
 			for(int i = 0; i < 9 ; i++) {
 				valAnt[i] = cube[faces[j]][(i)];
 				cube[faces[j]][(i)] = val[i];
@@ -502,13 +388,10 @@ public class Moves {
 	public static void Yn(int[][] cube) {
 		int val[] = new int[9];
 		int valAnt[] = new int[9];
-		int faces[]= {3,4,1,2};
+		int faces[]= {2,3,4,1,2};
 		faceRotation (cube,0,false);	
-		faceRotation (cube,5,false);			
-		for(int i = 0; i < 9 ; i++) {
-			val[i] = cube[faces[3]][(i)] ;
-		}
-		for(int j = 0; j < 4 ; j++)	{
+		faceRotation (cube,5,false);
+		for(int j = 0; j < 5 ; j++)	{
 			for(int i = 0; i < 9 ; i++) {
 				valAnt[i] = cube[faces[j]][(i)];
 				cube[faces[j]][(i)] = val[i];
@@ -520,13 +403,10 @@ public class Moves {
 	public static void Z(int[][] cube) {
 		int val[] = new int[9];
 		int valAnt[] = new int[9];
-		int faces[]= {0,3,5,1};
+		int faces[]= {1,0,3,5,1};
 		faceRotation (cube,2,true);	
-		faceRotation (cube,4,true);			
-		for(int i = 0; i < 9 ; i++) {
-			val[i] = cube[faces[3]][(i)] ;
-		}
-		for(int j = 0; j < 4 ; j++)	{
+		faceRotation (cube,4,true);	
+		for(int j = 0; j < 5 ; j++)	{
 			for(int i = 0; i < 9 ; i++) {
 				valAnt[i] = cube[faces[j]][(i)];
 				cube[faces[j]][(i)] = val[i];
@@ -538,13 +418,10 @@ public class Moves {
 	public static void Zn(int[][] cube) {
 		int val[] = new int[9];
 		int valAnt[] = new int[9];
-		int faces[]= {1,5,3,0};
+		int faces[]= {0,1,5,3,0};
 		faceRotation (cube,2,false);	
-		faceRotation (cube,4,false);			
-		for(int i = 0; i < 9 ; i++) {
-			val[i] = cube[faces[3]][(i)] ;
-		}
-		for(int j = 0; j < 4 ; j++)	{
+		faceRotation (cube,4,false);
+		for(int j = 0; j < 5 ; j++)	{
 			for(int i = 0; i < 9 ; i++) {
 				valAnt[i] = cube[faces[j]][(i)];
 				cube[faces[j]][(i)] = val[i];

@@ -34,6 +34,7 @@ public class CubeRubik {
 		System.out.println();
 	}
 	
+	
 	public static void DEBUG(int[][] cube) {
 		for(int i = 0; i < 9; i++) {
 			cube[Moves.centerNum][i] = i;

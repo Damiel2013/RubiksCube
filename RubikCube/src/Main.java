@@ -13,17 +13,9 @@ public class Main {
 	public static void main(String[] args)   {
 		
 		CubeRubik.reset(rubik);
-		CubeRubik.show(rubik);	
+		CubeRubik.show(rubik);
 		new GUI();
 	}
 
 }
 
-
-
-		//blue:			0
-		//orange:		1
-		//white:		2
-		//green:		3
-		//red:			4
-		//yellow:		5
