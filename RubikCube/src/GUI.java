@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 
 public class GUI extends JFrame  {
 
+	static JLabel scramblelabel = new JLabel("Scramble : ", JLabel.CENTER);
+	
+	
 	
 	public GUI() {
 		super("Cube de Rubik");
@@ -32,7 +35,7 @@ public class GUI extends JFrame  {
 	}
 	
 	
-	private class Buttons extends JPanel implements ActionListener{
+	public class Buttons extends JPanel implements ActionListener{
 		
 		public JButton b1= new JButton("R ");
 		public JButton b2= new JButton("R'");
@@ -209,7 +212,7 @@ public class GUI extends JFrame  {
 	        }); 
 	        b25.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
-	            	Moves.scrumble(Main.rubik);
+	            	Moves.scramble(Main.rubik);
 	        	 	CubeRubik.show(Main.rubik);
 	            }
 	        }); 
@@ -261,15 +264,19 @@ public class GUI extends JFrame  {
 		}  
 	}
 	
-	private class PanelCube extends JPanel{
+	public class PanelCube extends JPanel {
+		
 		public PanelCube(){
 			this.setMinimumSize(new Dimension (750,900));
+			scramblelabel.setFont(new Font("Helvetica",Font.BOLD,24));
+			this.add(scramblelabel);
+			
 		}		
 		public void paintComponent(Graphics _g) {
 			Graphics2D g = (Graphics2D) _g;			
 			//Dimensions of a single little cube
 			int cubeX0 = 75;
-			int cubeY0 = 30;
+			int cubeY0 = 60;
 			int cubeWH = 42;
 			int i = 0;
 			int coordsx [] = {0,3,3,3,3,6};
@@ -292,7 +299,7 @@ public class GUI extends JFrame  {
 			g.setColor(color);
 			g.fillRect(x, y, 40, 40);
 			g.setColor(Color.black);
-			g.drawRect(x, y, 41, 41);
+			g.drawRect(x, y, 40, 40);
 			//System.out.println("DEBUG : Painting called" );
 		}
 		
@@ -318,6 +325,9 @@ public class GUI extends JFrame  {
 			}
 			return Color.black;
 		}
+		
+		
+		
 	}
 	
 	

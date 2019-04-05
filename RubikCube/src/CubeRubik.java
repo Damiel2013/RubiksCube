@@ -2,6 +2,7 @@ public class CubeRubik {
 
 	
 	public static void reset(int[][] cube){
+		GUI.scramblelabel.setText("Scramble : ");
 		for(int i = 0; i < cube.length; i++) {
 			for(int j = 0; j < cube[i].length; j++) {
 				cube[i][j] = i;

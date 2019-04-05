@@ -62,8 +62,9 @@ public class Moves {
 			faceRotation (cube,3,true);	
 			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
-					valAnt[i] = cube[faces[j]][(i*3)+2];
-					cube[faces[j]][(i*3)+2] = val[i];
+					int iforms [] = {i*3+2,i*3+2,i*3,i*3+2,i*3+2};
+					valAnt[i] = cube[faces[j]][iforms[j]];
+					cube[faces[j]][iforms[j]] = val[i];
 					val[i] = valAnt[i];
 				}
 			}
@@ -77,23 +78,9 @@ public class Moves {
 			faceRotation (cube,3,false);	
 			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
-					valAnt[i] = cube[faces[j]][(i*3)+2];
-					cube[faces[j]][(i*3)+2] = val[i];
-					val[i] = valAnt[i];
-				}
-			}
-	}
-	
-	public static void L (int[][] cube) {
-		int val[] = new int[3];
-		int valAnt[] = new int[3];
-		
-			int faces[]= {2,0,4,5,2};
-			faceRotation (cube,1,true);	
-			for(int j = 0; j < 5 ; j++)	{
-				for(int i = 0; i < 3 ; i++) {
-					valAnt[i] = cube[faces[j]][(i*3)];
-					cube[faces[j]][(i*3)] = val[i];
+					int iforms [] = {i*3+2,i*3+2,i*3+2,i*3,i*3+2};
+					valAnt[i] = cube[faces[j]][iforms[j]];
+					cube[faces[j]][iforms[j]] = val[i];
 					val[i] = valAnt[i];
 				}
 			}
@@ -103,12 +90,29 @@ public class Moves {
 		int val[] = new int[3];
 		int valAnt[] = new int[3];
 		
+			int faces[]= {2,0,4,5,2};
+			faceRotation (cube,1,true);	
+			for(int j = 0; j < 5 ; j++)	{
+				for(int i = 0; i < 3 ; i++) {
+					int iforms [] = {i*3,i*3,i*3+2,i*3,i*3};
+					valAnt[i] = cube[faces[j]][iforms[j]];
+					cube[faces[j]][iforms[j]] = val[i];
+					val[i] = valAnt[i];
+				}
+			}
+	}
+	
+	public static void L (int[][] cube) {
+		int val[] = new int[3];
+		int valAnt[] = new int[3];
+		
 			int faces[]= {0,2,5,4,0};
 			faceRotation (cube,1,false);
 			for(int j = 0; j < 5 ; j++)	{
 				for(int i = 0; i < 3 ; i++) {
-					valAnt[i] = cube[faces[j]][(i*3)];
-					cube[faces[j]][(i*3)] = val[i];
+					int iforms [] = {i*3,i*3,i*3,i*3+2,i*3};
+					valAnt[i] = cube[faces[j]][iforms[j]];
+					cube[faces[j]][iforms[j]] = val[i];
 					val[i] = valAnt[i];
 				}
 			}
@@ -353,6 +357,9 @@ public class Moves {
 				val[i] = valAnt[i];
 			}
 		}
+		
+		//FACE ROTATIONS
+		
 	}
 	
 	public static void Xn(int[][] cube) {
@@ -430,70 +437,67 @@ public class Moves {
 		}
 	}
 	
+	public static String scrambleText = "";
 	
-	
-	public static void scrumble(int[][] cube) {
+	public static void scramble(int[][] cube) {
+		CubeRubik.reset(cube);
+		scrambleText = "Scramble : ";
 		Random rand = new Random();
 		int n;
 		for(int i = 0; i< 20 ; i++) {
-			n = rand.nextInt(18);
+			n = rand.nextInt(12);
 			switch (n) {
 			case 1:
 				L(cube);
+				scrambleText += "L ";
 				break;				
 			case 2:	
 				Ln(cube);
+				scrambleText += "L' ";
 				break;	
 			case 3:
 				R(cube);
+				scrambleText += "R ";
 				break;
 			case 4:
 				Rn(cube);
+				scrambleText += "R' ";
 				break;	
 			case 5:
 				U(cube);
+				scrambleText += "U ";
 				break;
 			case 6:
 				Un(cube);
+				scrambleText += "U' ";
 				break;	
 			case 7:
 				D(cube);
+				scrambleText += "D ";
 				break;
 			case 8:
 				Dn(cube);
+				scrambleText += "D' ";
 				break;	
 			case 9:
 				F(cube);
+				scrambleText += "F ";
 				break;	
 			case 10:
 				Fn(cube);
+				scrambleText += "F' ";
 				break;	
 			case 11:
 				B(cube);
+				scrambleText += "B ";
 				break;	
 			case 12:
 				Bn(cube);
-				break;	
-			case 13:
-				M(cube);
-				break;				
-			case 14:	
-				Mn(cube);
-				break;	
-			case 15:
-				E(cube);
-				break;
-			case 16:
-				En(cube);
-				break;	
-			case 17:
-				S(cube);
-				break;
-			case 18:
-				Sn(cube);
+				scrambleText += "B' ";
 				break;	
 			}
 		}
+		GUI.scramblelabel.setText(scrambleText);
 	}
 
 	
