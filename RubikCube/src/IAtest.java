@@ -1,4 +1,4 @@
-public class IAtest {
+public class IAtest implements Runnable {
 
 	/*
 	etapas :
@@ -18,36 +18,32 @@ public class IAtest {
 	
 	*/
 	
-	
-	
-	public static void solve(int cube[][]) {
-		
-		for(int i = 0; i<cube.length;i++) {
-			if(cube[i][4] == 2) {
-				switch (i){
-					case 0 :
-						Moves.Xn(cube);
-					break;
-					case 1 :
-						Moves.Yn(cube);
-					break;	
-					case 2 :
-						
-					break;
-					case 3 :
-						Moves.Y(cube);	
-					break;
-					case 4 :
-						Moves.Y(cube);	
-						Moves.Y(cube);	
-					break;
-					case 5 :
-						Moves.X(cube);
-					break;
-				}
-				break;
-			}	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		int i = 0;
+		Moves.Rn(Main.rubik);
+		Moves.Un(Main.rubik);
+		Moves.L(Main.rubik);
+		Moves.F(Main.rubik);
+	i++;
+		while(Main.rubik[2][4] != Main.rubik[2][0] || Main.rubik[2][4] != Main.rubik[2][1] || Main.rubik[2][4] != Main.rubik[2][2] || Main.rubik[2][4] != Main.rubik[2][3] || Main.rubik[2][4] != Main.rubik[2][5] ||
+				Main.rubik[2][4] != Main.rubik[2][6] || Main.rubik[2][4] != Main.rubik[2][7] || Main.rubik[2][4] != Main.rubik[2][8] ) {
+			Moves.Rn(Main.rubik);			
+			Moves.Un(Main.rubik);				
+			Moves.L(Main.rubik);
+			Moves.F(Main.rubik);
+			i++;
+			System.out.println("va por :  " + i);				
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
-		System.out.println("posicionamiento");
-		}		
+		
+	}			
+	
 	}

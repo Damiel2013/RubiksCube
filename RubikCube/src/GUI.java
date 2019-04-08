@@ -61,7 +61,7 @@ public class GUI extends JFrame  {
 		public JButton b22= new JButton("Y'");
 		public JButton b23= new JButton("Z ");
 		public JButton b24= new JButton("Z'");
-		public JButton b25= new JButton("Scrumble");
+		public JButton b25= new JButton("Scramble");
 		public JButton b26= new JButton("Reset ");
 		public JButton b27= new JButton("Solve ");
 		
@@ -75,7 +75,7 @@ public class GUI extends JFrame  {
 	        b2.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
 	            	Moves.Rn(Main.rubik);
-	        	 	CubeRubik.show(Main.rubik);
+	        	 //	CubeRubik.show(Main.rubik);
 	            }
 	        }); 
 	        b3.addActionListener(new ActionListener() {
@@ -99,7 +99,7 @@ public class GUI extends JFrame  {
 	        b6.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
 	            	Moves.Un(Main.rubik);
-	        	 	CubeRubik.show(Main.rubik);
+	        	 //	CubeRubik.show(Main.rubik);
 	            }
 	        }); 
 	        b7.addActionListener(new ActionListener() {
@@ -186,7 +186,7 @@ public class GUI extends JFrame  {
 	        	 	CubeRubik.show(Main.rubik);
 	            }
 	        }); 
-	        b21.addActionListener(new ActionListener() {
+	      b21.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
 	            	Moves.Y(Main.rubik);
 	        	 	CubeRubik.show(Main.rubik);
@@ -224,7 +224,8 @@ public class GUI extends JFrame  {
 	        });
 	        b27.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
-	            	IAtest.solve(Main.rubik);
+	            	//IAtest.run(Main.rubik);
+	            	new Thread (new IAtest()).start();
 	            	CubeRubik.show(Main.rubik);       	 	
 	            }
 	        }); 
@@ -256,6 +257,8 @@ public class GUI extends JFrame  {
 	        add(b25);
 	        add(b26);	
 	        add(b27);
+	     
+	        
 	        
 
 		}
@@ -325,6 +328,8 @@ public class GUI extends JFrame  {
 			}
 			return Color.black;
 		}
+		
+			
 		
 		
 		
