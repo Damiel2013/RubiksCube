@@ -1,6 +1,6 @@
 public class CubeRubik {
 
-	
+//fonction d'initialisation du cube	
 	public static void reset(int[][] cube){
 		GUI.scramblelabel.setText("Scramble : ");
 		for(int i = 0; i < cube.length; i++) {
@@ -8,17 +8,9 @@ public class CubeRubik {
 				cube[i][j] = i;
 			}
 		}
-	}
-	
-	public static void showLine(int[] face, int row, boolean ln, boolean space) {
-		if(space) {System.out.print("   ");}
-		for(int j = 3*row; j <  3+3*row; j++) {
-			System.out.print(face[j]);
-		}
-		if(ln) {System.out.println();}
-		
-	}
+	}	
 
+//fonction qui montre le cube dans la console par ligne
 	public static void show(int[][] cube) {
 		for(int j = 0; j <  3; j++) {
 			showLine(cube[0], j, true, true);
@@ -35,7 +27,17 @@ public class CubeRubik {
 		System.out.println();
 	}
 	
+//fonction qui montre chaque ligne du cube	
+	public static void showLine(int[] face, int row, boolean ln, boolean space) {
+		if(space) {System.out.print("   ");}
+		for(int j = 3*row; j <  3+3*row; j++) {
+			System.out.print(face[j]);
+		}
+		if(ln) {System.out.println();}
+		
+	}
 	
+//fonction de DEBUG qui remet la couleur du centre de chauque face 	
 	public static void DEBUG(int[][] cube) {
 		for(int i = 0; i < 9; i++) {
 			cube[Moves.centerNum][i] = i;
