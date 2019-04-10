@@ -3,22 +3,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI extends JFrame  {	//Classe qui initialise la fenÃªtre
+public class GUI extends JFrame  {	//Classe qui initialise la fenêtre
 
-	static JLabel scramblelabel = new JLabel("Scramble : ", JLabel.CENTER);	//Texte du mÃ©lange
+	static JLabel scramblelabel = new JLabel("Scramble : ", JLabel.CENTER);	//Texte du mélange
 	
 	
 	
 	public GUI() {
-		super("Cube de Rubik");				//nommer la fenÃªtre 
+		super("Cube de Rubik");				//nommer la fenêtre 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(900, 900);				//taille de la fenÃªtre
 		Container container = getContentPane();
 		
-		Buttons buttons = new Buttons();		//dÃ©clarer une fenÃªtre avec les boutons
-		PanelCube rubik = new PanelCube();		//dÃ©clarer une fenÃªtre avec le cube
+		Buttons buttons = new Buttons();		//déclarer une fenêtre avec les boutons
+		PanelCube rubik = new PanelCube();		//déclarer une fenêtre avec le cube
 				
-		JSplitPane splitPaneRight = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, rubik, buttons);	//sÃ©parer le cube et les boutons
+		JSplitPane splitPaneRight = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, rubik, buttons);	//séparer le cube et les boutons
 		splitPaneRight.setOneTouchExpandable(true);
 		splitPaneRight.setDividerLocation(750);
 		
@@ -66,10 +66,10 @@ public class GUI extends JFrame  {	//Classe qui initialise la fenÃªtre
 		public JButton b27= new JButton("Solve ");
 		
 		public Buttons() {		
-		 b1.addActionListener(new ActionListener() {		//quand le bouton est touchÃ©
+		 b1.addActionListener(new ActionListener() {		//quand le bouton est touché
 	            public void actionPerformed(ActionEvent event) {	//faire une action
-	            	Moves.R(Main.rubik);            		//faire le mouvement dÃ©sirer	
-	        	CubeRubik.show(Main.rubik);			//montrer le cube aprÃ¨s le mouvement
+	            	Moves.R(Main.rubik);            		//faire le mouvement désiré	
+	        	CubeRubik.show(Main.rubik);			//montrer le cube après le mouvement
 	            }
 	        });       
 	        b2.addActionListener(new ActionListener() {
@@ -99,7 +99,7 @@ public class GUI extends JFrame  {	//Classe qui initialise la fenÃªtre
 	        b6.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
 	            	Moves.Un(Main.rubik);
-	        	 //	CubeRubik.show(Main.rubik);
+	        	 	CubeRubik.show(Main.rubik);
 	            }
 	        }); 
 	        b7.addActionListener(new ActionListener() {
@@ -224,7 +224,6 @@ public class GUI extends JFrame  {	//Classe qui initialise la fenÃªtre
 	        });
 	        b27.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
-	            	//IAtest.run(Main.rubik);
 	            	new Thread (new IAtest()).start();
 	            	CubeRubik.show(Main.rubik);       	 	
 	            }
@@ -272,24 +271,24 @@ public class GUI extends JFrame  {	//Classe qui initialise la fenÃªtre
 		public PanelCube(){
 			this.setMinimumSize(new Dimension (750,900));			//taille de la fenÃªtre
 			scramblelabel.setFont(new Font("Helvetica",Font.BOLD,24));
-			this.add(scramblelabel);					//ajouter le texte du mÃ©lange
+			this.add(scramblelabel);					//ajouter le texte du mélange
 			
 		}		
 		public void paintComponent(Graphics _g) {
 			Graphics2D g = (Graphics2D) _g;			
-			//Dimensions d'un carrÃ©
-			int cubeX0 = 75;		//position sur X du premier carrÃ©
-			int cubeY0 = 60;		//position sur Y du premier carrÃ©
-			int cubeWH = 42;		//Hauteur et largeur d'un carrÃ©
+			//Dimensions d'un carré
+			int cubeX0 = 75;		//position sur X du premier carré
+			int cubeY0 = 60;		//position sur Y du premier carré
+			int cubeWH = 42;		//Hauteur et largeur d'un carré
 			int i = 0;
-			int coordsx [] = {0,3,3,3,3,6};//multiplicateurs sur X nÃ©cÃ©ssaires
-			int coordsy [] = {3,0,3,6,9,3};//multiplicateurs sur Y nÃ©cÃ©ssaires
+			int coordsx [] = {0,3,3,3,3,6};//multiplicateurs sur X nécéssaires
+			int coordsy [] = {3,0,3,6,9,3};//multiplicateurs sur Y nécéssaires
 			
 			
 			for(int l = 0; l< 6;l++) {			
 				for(int k = coordsx[l]; k<coordsx[l]+3;k++) {				
 					for(int j = coordsy[l]; j<coordsy[l]+3 ;j++) {	
-						drawSqr(g, cubeX0 + j*cubeWH,cubeY0 + k*cubeWH, getColor(Main.rubik[l][i]));	//dessiner un carrÃ© au coordonnÃ©es dÃ©sirÃ©s      
+						drawSqr(g, cubeX0 + j*cubeWH,cubeY0 + k*cubeWH, getColor(Main.rubik[l][i]));	//dessiner un carré au coordonnées désirés      
 						i++;						
 					//	System.out.println("DEBUG : x " + j*cubeW + "  y :" + cubeY + k*cubeH + "  i : " + i );
 					}
@@ -299,15 +298,15 @@ public class GUI extends JFrame  {	//Classe qui initialise la fenÃªtre
 		}
 		
 		public void drawSqr(Graphics2D g, int x, int y, Color color) {
-			g.setColor(color);		//dessiner un rectangle du couleur du numÃ©ro
+			g.setColor(color);		//dessiner un rectangle du couleur du numéro
 			g.fillRect(x, y, 40, 40);	
-			g.setColor(Color.black);	//dessiner un rebord en noir pour chaque carrÃ©
+			g.setColor(Color.black);	//dessiner un rebord en noir pour chaque carré
 			g.drawRect(x, y, 40, 40);
 			//System.out.println("DEBUG : Painting called" );
 		}
 		
 		public Color getColor(int color) {
-			if(color == Main.white) {	//dÃ©terminer la couleur pour dessiner
+			if(color == Main.white) {	//déterminer la couleur pour dessiner
 				return Color.white;
 				//System.out.println("DEBUG : WHITE" );
 			} else if(color == Main.yellow) {

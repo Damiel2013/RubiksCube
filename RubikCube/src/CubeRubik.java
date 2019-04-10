@@ -37,7 +37,7 @@ public class CubeRubik {
 		
 	}
 	
-//fonction de DEBUG qui remet la couleur du centre de chauque face 	
+//fonction de DEBUG qui remet la couleur du centre de chaque face 	
 	public static void DEBUG(int[][] cube) {
 		for(int i = 0; i < 9; i++) {
 			cube[Moves.centerNum][i] = i;

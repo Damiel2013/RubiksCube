@@ -3,12 +3,12 @@ import java.util.Random;
 
 public class Moves {
 	
-	public static int[] cornerNum = {0,2,8,6};	//les numÃ©ros de chaque face des coins
-	public static int[] edgeNum = {1,5,7,3};	//les numÃ©ros de chaque face des bords
-	public static int centerNum = 4;		//les numÃ©ros de chaque face du centre
+	public static int[] cornerNum = {0,2,8,6};	//les numéros de chaque face des coins
+	public static int[] edgeNum = {1,5,7,3};	//les numéros de chaque face des bords
+	public static int centerNum = 4;		//les numéros de chaque face du centre
 	
 	
-	//fait roter la face indiqueÃ© dans le sens des aiguilles d'une montre ou au contraire-----------------------------------------------------------------	
+	//fait roter la face indiquée dans le sens des aiguilles d'une montre ou au contraire-----------------------------------------------------------------	
 		public static void faceRotation(int[][] cube ,int faceNum, boolean clockwise) {
 			int val, valAnt;
 			
@@ -17,8 +17,8 @@ public class Moves {
 				//rotation des 4 coins dans le sens des aiguilles d'une montre
 				val = cube[faceNum][cornerNum[cornerNum.length-1]];		//obtenir les valeurs pour remplacer
 				for(int i = 0; i < cornerNum.length; i++) {			
-					valAnt = cube[faceNum][cornerNum[i]];			//obtenir les valeurs Ã  remplacer
-					cube[faceNum][cornerNum[i]] = val;			//remplacer les numÃ©ros de chaque petit carrÃ©
+					valAnt = cube[faceNum][cornerNum[i]];			//obtenir les valeurs à remplacer
+					cube[faceNum][cornerNum[i]] = val;			//remplacer les numéros de chaque petit carré
 					val = valAnt;						//obtenir les nouvelles valeurs pour remplacer			
 				}
 			}
@@ -58,10 +58,10 @@ public class Moves {
 		public static void R (int[][] cube) {
 			int val[] = new int[3];
 			int valAnt[] = new int[3];
-			int faces[]= {2,0,4,5,2};					//les faces affectÃ©es (en ordre)
+			int faces[]= {2,0,4,5,2};					//les faces affectées (en ordre)
 			faceRotation (cube,3,true);					//faire roter la face selon le mouvement : quel cube, quelle face, quel sens
 			for(int j = 0; j < 5 ; j++)	{
-				if(faces[j]==4) {				//besoin d'inverser le sens des carreaux dans la colonne (Ã  cause du fait que le cube est en trois dimensions)
+				if(faces[j]==4) {				//besoin d'inverser le sens des carreaux dans la colonne (à  cause du fait que le cube est en trois dimensions)
 					int k = 0;
 					for(int i = 2; i >= 0 ; i--) {
 						int iforms [] = {i*3+2,i*3+2,i*3,i*3+2,i*3+2};	//les formules pour obtenir les colonnes (ou lignes) pour chaque face
@@ -587,21 +587,21 @@ public class Moves {
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	
-//fonction de mÃ©lange du cube
+//fonction de mélange du cube
 	
-	public static String scrambleText = "";		//initialization du texte du mÃ©lange
+	public static String scrambleText = "";		//initialization du texte du mélange
 	
 	public static void scramble(int[][] cube) {
-		CubeRubik.reset(cube);			//rÃ©intialization du cube pour le mÃ©langer
-		scrambleText = "Scramble : ";		//remise du texte du mÃ©lange
-		Random rand = new Random();		//initializer une nouvelle valeur alÃ©atoire
+		CubeRubik.reset(cube);			//réintialization du cube pour le mélanger
+		scrambleText = "Scramble : ";		//remise du texte du mélange
+		Random rand = new Random();		//initializer une nouvelle valeur aléatoire
 		int n;
-		for(int i = 0; i< 20 ; i++) {		//20 valeurs alÃ©atoires  
-			n = rand.nextInt(12);		//de 1 Ã  12 
+		for(int i = 0; i< 20 ; i++) {		//20 valeurs aléatoires  
+			n = rand.nextInt(12);		//de 1 à 12 
 			switch (n) {
-			case 1:				//si le nombre alÃ©atoire vaut 1
+			case 1:				//si le nombre aléatoire vaut 1
 				L(cube);		//faire L
-				scrambleText += "L ";	//ajouter L au texte du mÃ©lange
+				scrambleText += "L ";	//ajouter L au texte du mélange
 				break;				
 			case 2:	
 				Ln(cube);
@@ -649,7 +649,7 @@ public class Moves {
 				break;	
 			}
 		}
-		GUI.scramblelabel.setText(scrambleText);	//remettre le texte du mÃ©lange de l'interface
+		GUI.scramblelabel.setText(scrambleText);	//remettre le texte du mélange de l'interface
 	}
 
 	
