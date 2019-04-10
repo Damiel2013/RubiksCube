@@ -1,44 +1,28 @@
 public class IAtest implements Runnable {
 
-	/*
-	etapas :
-	1 - white cross
-	2 - white corners
-	3 - second row
-	4 - yellow cross
-	5 - yellow corners
-	6 - finishing cube
-	
-	
-	Is in Moves :
-	
-	public static int[] cornerNum = {0,2,8,6};
-	public static int[] edgeNum = {1,5,7,3};
-	
-	
-	*/
+	//Cette classe permet de conter la quantitée de cycles de certains mouvements pour résoudre le cube à nouveau
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		int i = 0;
 		Moves.Rn(Main.rubik);
 		Moves.Un(Main.rubik);
 		Moves.L(Main.rubik);
 		Moves.F(Main.rubik);
-	i++;
+		i++;
+		//Tant que la face de devant n'est pas résolue
+		//faire le cycle à nouveau
 		while(Main.rubik[2][4] != Main.rubik[2][0] || Main.rubik[2][4] != Main.rubik[2][1] || Main.rubik[2][4] != Main.rubik[2][2] || Main.rubik[2][4] != Main.rubik[2][3] || Main.rubik[2][4] != Main.rubik[2][5] ||
-				Main.rubik[2][4] != Main.rubik[2][6] || Main.rubik[2][4] != Main.rubik[2][7] || Main.rubik[2][4] != Main.rubik[2][8] ) {
+		      Main.rubik[2][4] != Main.rubik[2][6] || Main.rubik[2][4] != Main.rubik[2][7] || Main.rubik[2][4] != Main.rubik[2][8] ) {
 			Moves.Rn(Main.rubik);			
 			Moves.Un(Main.rubik);				
 			Moves.L(Main.rubik);
 			Moves.F(Main.rubik);
 			i++;
-			System.out.println("va por :  " + i);				
+			System.out.println("is at :  " + i);				
 			try {
-				Thread.sleep(50);
+				Thread.sleep(50);	//attendre 50 milisecondes 
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
