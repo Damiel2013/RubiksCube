@@ -9,6 +9,7 @@ public class Scramble implements Runnable {
 	
 	public void run(){	
 		
+		
 		isscrambling = true;
 		CubeRubik.reset(Main.rubik);				//réintialization du cube pour le mélanger
 		scrambleText = "Scramble : ";				//remise du texte du mélange
@@ -73,6 +74,7 @@ public class Scramble implements Runnable {
 			}
 			
 			GUI.scramblelabel.setText(scrambleText);		//remettre le texte du mélange de l'interface
+			
 		}
 		isscrambling = false;
 	}

@@ -3,6 +3,8 @@ public class CubeRubik {
 	//fonction d'initialisation du cube		
 	public static void reset(int[][] cube){
 		GUI.scramblelabel.setText("Scramble : ");
+		GUI.moveslabel.setText("Moves : ");
+		GUI.movesText = "Moves : " ;
 		for(int i = 0; i < cube.length; i++) {
 			for(int j = 0; j < cube[i].length; j++) {
 				cube[i][j] = i;

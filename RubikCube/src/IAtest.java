@@ -5,6 +5,7 @@ public class IAtest implements Runnable {
 	@Override
 	public void run() {
 		int i = 0;
+		CubeRubik.reset(Main.rubik);
 		Moves.Rn(Main.rubik);
 		Moves.Un(Main.rubik);
 		Moves.L(Main.rubik);

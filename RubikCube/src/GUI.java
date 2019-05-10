@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 
 	static JLabel scramblelabel = new JLabel("Scramble : ", JLabel.CENTER);
+	static JLabel moveslabel = new JLabel("Moves : ", JLabel.CENTER);
+	static String movesText = "Moves : ";
+	
 	
 	
 	
@@ -71,7 +74,9 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 			b1.addActionListener(new ActionListener() {						
 				public void actionPerformed(ActionEvent event) {		//quand le bouton est touché
 					if(Scramble.isscrambling == false) {				//vérifier que le mélange n'est pas être en train de se faire
-	            		Moves.R(Main.rubik);							//faire le mouvement désiré	
+	            		Moves.R(Main.rubik);							//faire le mouvement désiré		
+	            		movesText += "R ";								
+	            		moveslabel.setText(movesText);					//ajouter "R " au texte des derniers mouvements 
 	        	 		CubeRubik.show(Main.rubik);						//montrer le cube après le mouvement
 	            	}	
 	            }
@@ -80,6 +85,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Rn(Main.rubik);
+	            		movesText += "R' ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -88,6 +95,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.L(Main.rubik);
+	            		movesText += "L ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -96,6 +105,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Ln(Main.rubik);
+	            		movesText += "L' ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -104,6 +115,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.U(Main.rubik);
+	            		movesText += "U ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -112,6 +125,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Un(Main.rubik);
+	            		movesText += "U' ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -120,6 +135,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.D(Main.rubik);
+	            		movesText += "D ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -128,6 +145,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Dn(Main.rubik);
+	            		movesText += "D' ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -136,6 +155,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.F(Main.rubik);
+	            		movesText += "F ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -144,6 +165,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Fn(Main.rubik);
+	            		movesText += "F' ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -152,6 +175,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.B(Main.rubik);
+	            		movesText += "B ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -160,6 +185,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Bn(Main.rubik);
+	            		movesText += "B' ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -167,7 +194,9 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	        b13.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
-	            		Moves.Mn(Main.rubik);
+	            		Moves.M(Main.rubik);
+	            		movesText += "M ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -176,6 +205,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Mn(Main.rubik);
+	            		movesText += "M' ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -184,6 +215,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.E(Main.rubik);
+	            		movesText += "E ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -192,6 +225,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.En(Main.rubik);
+	            		movesText += "E' ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -200,6 +235,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.S(Main.rubik);
+	            		movesText += "S ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -208,6 +245,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Sn(Main.rubik);
+	            		movesText += "S' ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -216,6 +255,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 		            	Moves.X(Main.rubik);
+		            	movesText += "X ";
+	            		moveslabel.setText(movesText);
 		        	 	CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -224,6 +265,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 		            	Moves.Xn(Main.rubik);
+		            	movesText += "X' ";
+	            		moveslabel.setText(movesText);
 		        	 	CubeRubik.show(Main.rubik);
 	            	}	
 	            }
@@ -232,6 +275,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Y(Main.rubik);
+	            		movesText += "Y ";
+	            		moveslabel.setText(movesText);
 	            		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -240,6 +285,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {		
 	            		Moves.Yn(Main.rubik);
+	            		movesText += "Y' ";
+	            		moveslabel.setText(movesText);
 	        	 		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -248,6 +295,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Z(Main.rubik);
+	            		movesText += "Z ";
+	            		moveslabel.setText(movesText);
 	            		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -256,6 +305,8 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	            public void actionPerformed(ActionEvent event) {
 	            	if(Scramble.isscrambling == false) {	
 	            		Moves.Zn(Main.rubik);
+	            		movesText += "Z' ";
+	            		moveslabel.setText(movesText);
 	            		CubeRubik.show(Main.rubik);
 	            	}
 	            }
@@ -278,7 +329,7 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	        });
 	        b27.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
-	            	if(Scramble.isscrambling == false) {	
+	            	if(Scramble.isscrambling == false) {
 	            		new Thread (new IAtest()).start();			
 	            		CubeRubik.show(Main.rubik);    
 	            	}	
@@ -325,11 +376,13 @@ public class GUI extends JFrame  {		//Classe qui initialise la fenêtre
 	
 	public class PanelCube extends JPanel {
 		
-		public PanelCube(){
+		public PanelCube(){			
 			this.setMinimumSize(new Dimension (750,900));
+			this.setLayout(new BorderLayout());
 			scramblelabel.setFont(new Font("Helvetica",Font.BOLD,24));
-			this.add(scramblelabel);
-			
+			moveslabel.setFont(new Font("Helvetica",Font.BOLD,24));
+			this.add(scramblelabel, BorderLayout.NORTH);	
+			this.add(moveslabel, BorderLayout.SOUTH);
 		}		
 		public void paintComponent(Graphics _g) {
 			Graphics2D g = (Graphics2D) _g;			
