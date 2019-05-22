@@ -7,33 +7,33 @@ public class Moves  {
 	
 	
 	
-	//fait roter la face indiqueé dans le sens des aiguilles d'une montre ou au contraire-----------------------------------------------------------------	
+	//fait une rotation de la face indiqueé dans le sens des aiguilles d'une montre ou au contraire-----------------------------------------------------------------	
 		public static void faceRotation(int[][] cube ,int faceNum, boolean clockwise) {
 			int val, valAnt;
 			
 			//rotation des coins
 			if(clockwise) {
 				//rotation des 4 coins dans le sens des aiguilles d'une montre
-				val = cube[faceNum][cornerNum[cornerNum.length-1]];		//obtenir les valeurs pour remplacer
-				for(int i = 0; i < cornerNum.length; i++) {			
-					valAnt = cube[faceNum][cornerNum[i]];				//obtenir les valeurs à remplacer
-					cube[faceNum][cornerNum[i]] = val;					//remplacer les numéros de chaque petit carré
-					val = valAnt;										//obtenir les nouvelles valeurs pour remplacer			
-				}
-				//rotation des 4 bords dans le sens des aiguilles d'une montre
-				val = cube[faceNum][cornerNum[0]];
-				for(int i = cornerNum.length-1; i >= 0; i--) {
+				val = cube[faceNum][cornerNum[cornerNum.length-1]];
+				for(int i = 0; i < cornerNum.length; i++) {
 					valAnt = cube[faceNum][cornerNum[i]];
 					cube[faceNum][cornerNum[i]] = val;
 					val = valAnt;									
 				}
-			}
-			else {
-				//rotation des 4 coins dans le sens *contraire* des aiguilles d'une montre
+				//rotation des 4 bords dans le sens des aiguilles d'une montre
 				val = cube[faceNum][edgeNum[edgeNum.length-1]];
 				for(int i = 0; i < edgeNum.length; i++) {
 					valAnt = cube[faceNum][edgeNum[i]];
 					cube[faceNum][edgeNum[i]] = val;
+					val = valAnt;		
+				}
+			}	
+			else {
+				//rotation des 4 coins dans le sens *contraire* des aiguilles d'une montre
+				val = cube[faceNum][cornerNum[0]];
+				for(int i = cornerNum.length-1; i >= 0; i--) {
+					valAnt = cube[faceNum][cornerNum[i]];
+					cube[faceNum][cornerNum[i]] = val;
 					val = valAnt;									
 				}
 				//rotation des 4 bords dans le sens *contraire* des aiguilles d'une montre
@@ -45,6 +45,7 @@ public class Moves  {
 				}
 			}
 		}
+
 			
 		
 		
@@ -54,7 +55,7 @@ public class Moves  {
 					int val[] = new int[3];
 					int valAnt[] = new int[3];
 					int faces[]= {2,0,4,5,2};								//les faces affectées (en ordre)
-					faceRotation (cube,3,true);									//faire roter la face selon le mouvement : quel cube, quelle face, quel sens
+					faceRotation (cube,3,true);									//faire une rotation de la face selon le mouvement : quel cube, quelle face, quel sens
 					for(int j = 0; j < 5 ; j++)	{
 						if(faces[j]==4) {										//besoin d'inverser le sens des carreaux dans la colonne (à cause de la nature tridimensionelle du cube)
 							int k = 0;
